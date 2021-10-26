@@ -1,0 +1,107 @@
+<form #f="ngForm" (ngSubmit)="f.form.valid && save()">
+<div class="card">
+    <div class="card-header">Ajouter utilisateur </div>
+<div class="bard-body row" >
+
+
+<div class="form-group col-sm-6">
+<label>Prénom</label>
+<input class="form-control" [(ngModel)] = "user.firstName" name="firstName" 
+required #first="ngModel" >
+
+<div class="text-danger"  *ngIf="f.submitted && first.invalid">
+    <div *ngIf="first.errors?.required">Prenom requis</div>
+</div>
+
+
+</div>
+
+<div class="form-group col-sm-6">
+    <label>Nom</label>
+    <input class="form-control" [(ngModel)] = "user.lastName" name="lastName" required #last="ngModel" >
+    <div class="text-danger" *ngIf="f.submitted && last.invalid">
+        <div *ngIf="last.errors?.required">Nom requis</div>
+    </div>
+    </div>
+    
+    <div class="form-group col-sm-6">
+        <label>Adresse</label>
+        <input class="form-control" [(ngModel)] ="user.adresse" name="adress" required #adr="ngModel" > 
+        <div class="text-danger" *ngIf="f.submitted && adr.invalid">
+            <div *ngIf="adr?.errors?.required">Adresse requis</div>
+        </div>
+        
+        
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label>Email</label>
+            <input class="form-control" [(ngModel)] = "user.email" name="email"
+             required #mail="ngModel" email >
+            <div class="text-danger" *ngIf="f.submitted && mail.invalid">
+                <div *ngIf="mail?.errors?.required">Email requis</div>
+                <div *ngIf="mail?.errors?.email">Email invalid</div>
+            </div>
+        </div>
+            
+            
+
+            <div class="form-group col-sm-6">
+                <label>Nom d'utilisateur</label>
+                <input class="form-control" [(ngModel)] = "user.username" name="user"
+                 #username="ngModel" required>
+                <div class="text-danger" *ngIf="f.submitted && username.invalid">
+                    <div *ngIf="username?.errors?.required">username requis</div>
+                </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label>Role</label>
+                    <select class="form-control" [(ngModel)]="user.role" #role="ngModel" required >
+                        <option value="ROLE_ADMIN">Administrateur</option>
+                        <option value="ROLE_USER">Utilisateur</option>
+                        </select>
+                        <div class="text-danger" *ngIf="f.submitted && role.invalid">
+                            <div *ngIf="role?.errors?.required">Role requis</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label>Mot de passe</label>
+                        <input type="password"   class="form-control" 
+                        [(ngModel)] = "user.password" name="pwd"
+                        #pwd="ngModel" required>
+                    
+                        <div class="text-danger" *ngIf="f.submitted && pwd.invalid">
+                            <div *ngIf="pwd?.errors?.required">Password requis</div>
+                        </div>
+                    </div>
+
+                        <div class="form-group col-sm-6">
+                            <label>Repeter Mot de passe </label>
+                            <input type="password" class="form-control" [(ngModel)] ="confirmPwd" name="pwd2"
+                            #pwd2="ngModel" required
+                            
+                            [pattern]= "user.password">
+                            <div class="text-danger" *ngIf="f.submitted && pwd2.invalid">
+                                <div *ngIf="pwd2?.errors?.required">confirm Password requis</div>
+                                <div *ngIf="pwd2?.errors?.pattern">le mot de passe ne somme pas identique</div>
+                            </div>
+                        </div>
+    
+                        <div class="card-footer">
+                           
+                            <button class="btn btn-success float-end" >Ajouter</button>
+                        </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+</form>

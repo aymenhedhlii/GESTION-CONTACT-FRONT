@@ -1,0 +1,48 @@
+<button pButton class="p-button-success" icon="pi pi-plus"  
+routerLink="/users/new" label="Nouvel utilisateur"></button>
+
+
+
+
+<p-table [value]="users" responsiveLayout="scroll" [paginator]= "true" [rows]="10">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="firstName"> <p-sortIcon filed="firstName"></p-sortIcon>Nom</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>email</th>
+            <th>Username</th>
+            <th>Opérations</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+        <tr>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.adresse}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.username}}</td>
+<td>
+<button pButton class="p-button-danger" 
+icon="pi pi-trash" 
+pTooltip="supprimer" 
+style="margin-right: 10px"
+tooltipPosition="top"
+(click)="delete(user.id, $event)"></button>
+
+
+    <button pButton class="p-button-warning" 
+    icon="pi pi-pencil" 
+    pTooltip="Editer" 
+    tooltipPosition="top"></button>
+    
+    </td>
+
+        </tr>
+    </ng-template>
+</p-table>
+
+
+
+<p-confirmPopup></p-confirmPopup>
+
